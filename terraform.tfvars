@@ -1,0 +1,5 @@
+profile        = "devops"
+region         = "us-east-1"
+vpc-prefix     = "dev"
+vpc-name       = "main-vpc"
+vpc-cidr-block = "192.168.0.0/16"
