@@ -21,37 +21,21 @@ variable "vpc_cidr_block" {
   type        = string
 }
 
-variable "public_cidr_block" {
-  description = "VPC Subnet CIDR block"
-  type        = string
-}
-
-variable "private_cidr_block" {
-  description = "VPC Subnet CIDR block"
-  type        = string
-}
-
 variable "igw_name" {
   description = "IGW name"
   type        = string
 }
 
-variable "public_sn_name" {
-  description = "IGW name"
-  type        = string
+# Subnet variables
+variable "azs" {
+  type = list(string)
 }
-
-variable "private_sn_name" {
-  description = "IGW name"
-  type        = string
+variable "cidr_blocks" {
+  type = list(string)
 }
-
-variable "availability_zone_1a" {
-  description = "AZ name"
-  type        = string
+variable "public_ips" {
+  type = list(bool)
 }
-
-variable "availability_zone_1b" {
-  description = "AZ name"
-  type        = string
+variable "subnet_names" {
+  type = list(string)
 }

@@ -1,21 +1,13 @@
-resource "aws_subnet" "public_sn" {
+# VPC Subnets
+resource "aws_subnet" "subnet" {
+  count                   = length(var.cidr_blocks)
   vpc_id                  = aws_vpc.main_vpc.id
-  cidr_block              = var.public_cidr_block
-  availability_zone       = var.availability_zone_1a
-  map_public_ip_on_launch = true
+  cidr_block              = var.cidr_blocks[count.index]
+  availability_zone       = var.azs[count.index]
+  map_public_ip_on_launch = var.public_ips[count.index]
 
   tags = {
-    Name = "${var.vpc_prefix}-${var.public_sn_name}"
+    Name = "${var.vpc_prefix}-${var.subnet_names[count.index]}"
   }
-}
-
-resource "aws_subnet" "private_sn" {
-  vpc_id                  = aws_vpc.main_vpc.id
-  cidr_block              = var.private_cidr_block
-  availability_zone       = var.availability_zone_1b
-  map_public_ip_on_launch = false
-
-  tags = {
-    Name = "${var.vpc_prefix}-${var.private_sn_name}"
-  }
+  depends_on = [aws_vpc.main_vpc]
 }
