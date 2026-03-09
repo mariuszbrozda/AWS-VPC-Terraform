@@ -39,3 +39,7 @@ variable "public_ips" {
 variable "subnet_names" {
   type = list(string)
 }
+
+variable "route_table_name" {
+  type = string
+}
