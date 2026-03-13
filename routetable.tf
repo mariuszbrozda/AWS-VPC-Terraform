@@ -1,4 +1,5 @@
-resource "aws_route_table" "route_table" {
+# Public routetables for internet access
+resource "aws_route_table" "public_route_table" {
   vpc_id = aws_vpc.main_vpc.id
 
   route {
