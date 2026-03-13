@@ -10,4 +10,5 @@ resource "aws_route_table" "public_route_table" {
   tags = {
     Name = "${var.vpc_prefix}-{var.route_table_name}"
   }
+  depends_on = [aws_vpc.main_vpc, aws_internet_gateway.main_igw]
 }

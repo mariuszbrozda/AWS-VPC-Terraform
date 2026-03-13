@@ -1,6 +1,7 @@
 # Data sources
 data "aws_vpc" "selected_vpc" {
   cidr_block = "192.168.0.0/16"
+  depends_on = [aws_vpc.main_vpc]
 }
 
 data "aws_subnets" "public_subnets" {
@@ -13,5 +14,5 @@ data "aws_subnets" "public_subnets" {
     name   = "tag:Name"
     values = ["*public*"]
   }
-
+  depends_on = [aws_vpc.main_vpc, aws_subnet.subnet]
 }
