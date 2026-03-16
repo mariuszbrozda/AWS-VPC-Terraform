@@ -43,7 +43,7 @@ terraform init
 #### Format and validate configuration
 
 ```bash
-terraform fmt && validate
+terraform fmt && terraform validate
 ```
 
 #### Plan and deploy VPC and subnets
